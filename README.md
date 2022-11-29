@@ -35,6 +35,53 @@
 
 Соберите модель, состоящую из двух виртуальных машин. Установите pacemaker, corosync, pcs.  Настройте HA кластер.
 
+### Развертка кластера
+
+Установка pacemaker:
+
+`sudo apt install pacemaker corosync pcs`
+
+На обоих серверах ставим:
+
+`systemctl enable pcsd`
+
+Обязательно прописать в файле **/etc/hosts** dns суффиксы нодов:
+
+```
+127.0.0.1 localhost
+192.168.0.1 nodeone
+192.168.0.2 nodetwo
+192.168.1.1 nodeone
+192.168.1.2 nodetwo
+# The following lines are desirable for IPv6 capable hosts
+::1 localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+```
+
+Для управления кластером рекомендуется пользоваться утилитой
+pcs. При установке pacemaker автоматически будет создан
+пользователь hacluster. Для использования pcs, а также для
+доступа в веб-интерфейс, нужно задать пароль пользователю
+hacluster:
+
+`passwd hacluster`
+
+Запуск сервиса:
+
+`service pcsd start`
+
+Настраиваем аутентификацию (на одном узле):
+
+```
+pcs host auth <Сервер_1> <Сервер_2>
+Username: hacluster
+Password:
+<Сервер_1>: Authorized
+<Сервер_2>: Authorized
+```
+![alt text](https://github.com/filipp761/10.3-Pacemaker/blob/main/img/auth.jpeg)
+
 *Пришлите конфигурации сервисов для каждой ноды, конфигурационный файл corosync и бэкап конфигурации pacemaker при помощи команды pcs config backup filename.*
 
 ---
