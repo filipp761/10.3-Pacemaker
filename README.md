@@ -47,4 +47,74 @@
 
 Установите и настройте DRBD сервис для настроенного кластера.
 
-* Пришлите  конфигурацию DRBD сервиса - *.res ресурсов для каждой ноды.**
+Установка DRBD
+
+`sudo apt install drbd-utils`
+
+Подключаем DRBD к модулям ядра:
+
+`sudo modprobe drbd`
+
+Добавляем в загрузки системы:
+
+`echo “drbd” >> /etc/modules`
+
+Установка должна быть на двух машинах
+
+Следующим шагом требуется проверить созданные накопители:
+
+`ls /dev |grep sd`
+
+Выполнить: 
+
+`fdisk /dev/sdb`
+
+Команды пошагово:
+n — создание диска — либо primary, либо extension.
+Создаем primary — ключ p.
+Остальное по вашему усмотрению — по умолчанию.
+Enter — Enter готово
+
+Создаем логические разделы:
+
+`pvcreate /dev/sdb1`
+
+`vgcreate vg0 /dev/sdb1`
+
+`lvcreate -L3G -n www vg0`
+
+`lvcreate -L3G -n mysql vg0`
+
+Создаем конфигурационные файлы
+
+`/etc/drbd.d/www.res`
+
+`/etc/drbd.d/mysql.res`
+
+После чего на обоих серверах выполняем:
+
+`drbdadm create-md www`
+
+`drbdadm create-md mysql`
+
+`drbdadm up all`
+
+Выполнить на первой ноде:
+
+`drbdadm primary --force www`
+
+`drbdadm primary --force mysql`
+
+На второй ноде:
+
+`drbdadm secondary www`
+
+Теперь требуется подключить разделы и проверить репликацию:
+
+`mkdir /mnt/www`
+
+`mkdir /mnt/mysql`
+
+`mount /dev/drbd0 /mnt/www`
+
+`mount /dev/drbd2 /mnt/mysql`
