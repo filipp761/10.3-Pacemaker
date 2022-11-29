@@ -80,7 +80,7 @@ Password:
 <Сервер_1>: Authorized
 <Сервер_2>: Authorized
 ```
-![alt text](https://github.com/filipp761/10.3-Pacemaker/tree/main/img/auth.png)
+![alt text](https://github.com/filipp761/10.3-Pacemaker/blob/main/img/auth.jpg)
 
 *Пришлите конфигурации сервисов для каждой ноды, конфигурационный файл corosync и бэкап конфигурации pacemaker при помощи команды pcs config backup filename.*
 
