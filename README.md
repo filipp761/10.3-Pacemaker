@@ -201,3 +201,9 @@ Enter — Enter готово
 `mount /dev/drbd0 /mnt/www`
 
 `mount /dev/drbd2 /mnt/mysql`
+
+**Конфигурационный файл www.res**
+![alt text]()
+
+**Конфигурационный файл mysql.res**
+![alt text]()
