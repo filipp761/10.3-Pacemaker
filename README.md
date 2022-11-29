@@ -115,7 +115,8 @@ systemctl enable pacemaker
 
 **Управление кластером** - статус node1 и node2
 
-
+![alt text](https://github.com/filipp761/10.3-Pacemaker/blob/main/img/node1.jpg)
+![alt text](https://github.com/filipp761/10.3-Pacemaker/blob/main/img/node2.jpg)
 
 *Пришлите конфигурации сервисов для каждой ноды, конфигурационный файл corosync и бэкап конфигурации pacemaker при помощи команды pcs config backup filename.*
 
