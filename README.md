@@ -203,7 +203,7 @@ Enter — Enter готово
 `mount /dev/drbd2 /mnt/mysql`
 
 **Конфигурационный файл www.res**
-![alt text]()
+![alt text](https://github.com/filipp761/10.3-Pacemaker/blob/main/img/www.res.jpg)
 
 **Конфигурационный файл mysql.res**
-![alt text]()
+![alt text](https://github.com/filipp761/10.3-Pacemaker/blob/main/img/mysql.res.jpg)
