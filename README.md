@@ -97,6 +97,7 @@ Password:
 
 `pcs cluster enable -all`
 
+![alt text](https://github.com/filipp761/10.3-Pacemaker/blob/main/img/cluster%20enable.jpg)
 
 
 *Пришлите конфигурации сервисов для каждой ноды, конфигурационный файл corosync и бэкап конфигурации pacemaker при помощи команды pcs config backup filename.*
