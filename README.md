@@ -82,6 +82,17 @@ Password:
 ```
 ![alt text](https://github.com/filipp761/10.3-Pacemaker/blob/main/img/auth.jpg)
 
+Следующим шагом запускаем ноды:
+
+`pcs cluster setup newCluster nodeone nodetwo`
+
+**Важно**: предварительно проверьте включена ли служба pcsd на
+обоих кластерах:
+
+`service --status-all`
+
+
+
 *Пришлите конфигурации сервисов для каждой ноды, конфигурационный файл corosync и бэкап конфигурации pacemaker при помощи команды pcs config backup filename.*
 
 ---
